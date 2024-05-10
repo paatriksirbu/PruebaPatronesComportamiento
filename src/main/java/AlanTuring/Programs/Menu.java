@@ -18,10 +18,12 @@ public class Menu {
                 case 1:
                     CountDown cd = new CountDown();
                     cd.countDown();
+                    System.out.println("\n");
                     break;
                 case 2:
                     CountUp cu = new CountUp();
                     cu.countUp();
+                    System.out.println("\n");
                     break;
                 case 3:
                     System.out.println("Saliendo del programa...");
