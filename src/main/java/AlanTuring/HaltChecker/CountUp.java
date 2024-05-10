@@ -10,7 +10,7 @@ public class CountUp implements Handler{
 
     @Override
     public boolean handleRequest(String code) {
-        if(code.contains("CountUp") && code.contains("count++;") && code.contains("while(true)")){
+        if(code.contains("CountUp") && code.contains("count++;") && code.contains("++count") && code.contains("while(true)")){
             return false;
         } else if (nextHandler != null) {
             return nextHandler.handleRequest(code);
