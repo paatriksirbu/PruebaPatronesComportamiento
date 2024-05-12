@@ -1,7 +1,7 @@
 package AlanTuring.Reverser.Handlers;
 import AlanTuring.HaltChecker.Handler;
 
-public class ForLoopHandler implements Handler{
+public abstract class ForLoopHandler implements Handler{
     private Handler nextHandler;
 
     @Override
