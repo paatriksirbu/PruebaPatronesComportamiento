@@ -37,4 +37,49 @@ public class ReverserView extends JFrame{
 
         add(panel, BorderLayout.CENTER);
     }
+
+    public void setCountUpButtonListener(ActionListener listener){
+        countUpButton.addActionListener(listener);
+    }
+
+    public void setCountDownButtonListener(ActionListener listener){
+        countDownButton.addActionListener(listener);
+    }
+
+    public void setReverserButtonListener(ActionListener listener){
+        reverserButton.addActionListener(listener);
+    }
+
+    public void setResult(String text){
+        result.setText(text);
+    }
+
+    public String getResult(){
+        return result.getText();
+    }
+
+    public void displayErrorMessage(String errorMessage){
+        errorMessage = "An error occurred.";
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
+
+    public void displaySuccessMessage(String successMessage){
+        successMessage = "Operation completed successfully.";
+        JOptionPane.showMessageDialog(this, successMessage);
+    }
+
+    public void displayInfoMessage(String infoMessage){
+        infoMessage = "Information.";
+        JOptionPane.showMessageDialog(this, infoMessage);
+    }
+
+    public void displayWarningMessage(String warningMessage){
+        warningMessage = "Warning there is a problem.";
+        JOptionPane.showMessageDialog(this, warningMessage);
+    }
+
+    public String getCodeInput(){
+        return JOptionPane.showInputDialog(this, "Enter code to analyze:");
+    }
+
 }
