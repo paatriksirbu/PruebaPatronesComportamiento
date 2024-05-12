@@ -28,35 +28,26 @@ public class ReverserController {
     }
 
     private void handleCountUp(){
-        view.setResult("Counting up...");   //Muestra el mensaje "Counting up..." en la vista.
+        view.setResult("Counting up won't stop... Exiting immediately.");   //Muestra el mensaje "Counting up..." en la vista.
     }
 
     private void handleCountDown(){
-        view.setResult("Counting down..."); //Muestra el mensaje "Counting down..." en la vista.
+        view.setResult("Counting down will stop... Infinite loop"); //Muestra el mensaje "Counting down..." en la vista.
+        while(true); //Bucle infinito.
     }
 
     private void setUpChain() { //Configuracion de la cadena de responsabilidad. (Patron Chain of Responsibility)
         InfiniteLoopHandler loopHandler = new InfiniteLoopHandler() {
             @Override
-            public boolean handle(String code) {
-                if (code.contains("while(true)")) {
-                    System.out.println("It has been detected an infinite loop in the code.");
-                    return true;
-                } else {
-                    return handleNext(code);
-                }
+            public boolean handleRequest(String code) {
+                return false;
             }
         };
 
         ForLoopHandler forHandler = new ForLoopHandler() {
             @Override
-            public boolean handle(String code) {
-                if (code.matches(".*for\\s*\\([^;]*;\\s*[^;]+;\\s*[^)]*\\)\\s*\\{.*")) {
-                    System.out.println("It has been detected a for loop in the code.");
-                    return true;
-                } else {
-                    return handleNext(code);
-                }
+            public boolean handleRequest(String code) {
+                return false;
             }
         };
 
