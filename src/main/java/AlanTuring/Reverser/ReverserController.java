@@ -7,6 +7,7 @@ public class ReverserController {
 
     private ReverserView view;
     private Handler chain;
+    private boolean continueLoop = true;
 
     public ReverserController(ReverserView view){
         this.view = view;
@@ -19,10 +20,11 @@ public class ReverserController {
         view.setReverserButtonListener(e -> handleReverser());
         view.setCountUpButtonListener(e -> handleCountUp());
         view.setCountDownButtonListener(e -> handleCountDown());
+        view.setStopButtonListener(e -> stopLoop());
     }
 
     private void handleReverser(){
-        String code = view.getResult(); //Obtiene el código ingresado por el usuario.
+        String code = view.getCodeInput(); //Obtiene el código ingresado por el usuario.
         boolean result = chain.handle(code);
         view.setResult(result ? "The code will halt." : "The code will not halt.");
     }
@@ -33,27 +35,39 @@ public class ReverserController {
 
     private void handleCountDown(){
         view.setResult("Counting down will stop... Infinite loop"); //Muestra el mensaje "Counting down..." en la vista.
-        while(true); //Bucle infinito.
+        new Thread(() -> {
+            while(continueLoop){
+                System.out.println("Counting down...");
+            }
+        }).start();
+
     }
 
     private void setUpChain() { //Configuracion de la cadena de responsabilidad. (Patron Chain of Responsibility)
         InfiniteLoopHandler loopHandler = new InfiniteLoopHandler() {
             @Override
             public boolean handleRequest(String code) {
-                return false;
+                return code.contains("while(true)");
             }
         };
 
         ForLoopHandler forHandler = new ForLoopHandler() {
             @Override
             public boolean handleRequest(String code) {
-                return false;
+                return code.contains("for(");
             }
         };
 
-        loopHandler.setNextHandler(forHandler);
+        loopHandler.setNextHandler(forHandler); //Enlazamos los manejadores de bucles infinitos e iniciamos la cadena en el primer manejador.
         this.chain = loopHandler;
 
     }
+
+
+    private void stopLoop(){
+        continueLoop = false;
+    }
+
+
 
 }

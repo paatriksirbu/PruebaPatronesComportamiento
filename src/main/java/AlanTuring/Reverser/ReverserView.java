@@ -7,6 +7,7 @@ public class ReverserView extends JPanel{
     private JButton countUpButton;
     private JButton countDownButton;
     private JButton reverserButton;
+    private JButton stopButton;
     private JTextArea result;
 
 
@@ -20,6 +21,7 @@ public class ReverserView extends JPanel{
         countUpButton = createButton("Count Up");
         countDownButton = createButton("Count Down");
         reverserButton = createButton("Reverser");
+        stopButton = createButton("Stop");
 
         result = new JTextArea("Results will be displayed here.");
         result.setEditable(false);
@@ -32,7 +34,10 @@ public class ReverserView extends JPanel{
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(reverserButton);
         add(Box.createRigidArea(new Dimension(0, 10)));
+        add(stopButton);
+        add(Box.createRigidArea(new Dimension(0, 10)));
         add(result);
+
     }
 
     private JButton createButton(String text){
@@ -87,6 +92,10 @@ public class ReverserView extends JPanel{
 
     public String getCodeInput(){
         return JOptionPane.showInputDialog(this, "Enter code to analyze:");
+    }
+
+    public void setStopButtonListener(ActionListener listener){
+        stopButton.addActionListener(listener);
     }
 
 
