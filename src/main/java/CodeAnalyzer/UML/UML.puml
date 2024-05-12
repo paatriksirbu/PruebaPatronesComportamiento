@@ -1,0 +1,44 @@
+@startuml
+interface HandlerInterface {
+}
+
+abstract class HandlerClass {
+    {abstract} +handleRequest(request: String): String
+}
+HandlerClass ..|> HandlerInterface
+
+class StringHandler {
+    +handleRequest(request: String): String
+}
+StringHandler -up-|> HandlerClass
+
+class SyntaxHandler {
+    +handleRequest(request: String): String
+}
+SyntaxHandler -up-|> HandlerClass
+
+class CommentHandler {
+    +handleRequest(request: String): String
+}
+CommentHandler -up-|> HandlerClass
+
+class ParenthesisHandler {
+    +handleRequest(request: String): String
+}
+ParenthesisHandler -up-|> HandlerClass
+
+class ReservedWordHandler {
+    +handleRequest(request: String): String
+}
+ReservedWordHandler -up-|> HandlerClass
+
+class Analyzer {
+    -handler: HandlerInterface
+}
+Analyzer ..> HandlerInterface : uses
+
+class Main {
+}
+Main ..> Analyzer : creates
+
+@enduml
