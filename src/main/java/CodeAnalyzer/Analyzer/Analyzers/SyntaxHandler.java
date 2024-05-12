@@ -14,6 +14,6 @@ public class SyntaxHandler extends HandlerClass {
                 return super.handleRequest(request);
             }
 
-            throw new RuntimeException("Syntax error in code.");
+            return "Syntax error in code.";
         }
 }
