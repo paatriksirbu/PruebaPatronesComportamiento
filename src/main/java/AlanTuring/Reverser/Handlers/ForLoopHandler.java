@@ -20,8 +20,11 @@ public abstract class ForLoopHandler implements Handler{
                                                                                         //Que contengan la estructura de un bucle for.
             System.out.println("It has been detected a for loop in the code.");
             return true;
-        } else {
+        } else if (nextHandler != null) {
             return nextHandler.handle(code);
+        } else {
+            return false;
+
         }
     }
 

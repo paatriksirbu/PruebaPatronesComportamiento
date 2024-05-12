@@ -20,10 +20,12 @@ public abstract class InfiniteLoopHandler implements Handler {
         if (code.contains("while(true)")) {
             System.out.println("It has been detected an infinite loop in the code.");
             return true;
-        } else {
+        } else if (nextHandler != null) {
             return nextHandler.handle(code);
-        }
+        } else {
+            return false;
 
+        }
     }
 
 }
