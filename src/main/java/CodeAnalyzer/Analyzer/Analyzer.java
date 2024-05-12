@@ -6,6 +6,9 @@ public class Analyzer {
 
     private HandlerClass chain;
 
+    public Analyzer() {
+        buildChain();
+    }
 
     private void buildChain() {
 
