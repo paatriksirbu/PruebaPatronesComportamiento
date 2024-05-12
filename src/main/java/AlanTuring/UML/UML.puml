@@ -1,0 +1,102 @@
+@startuml
+
+package AlanTuring.HaltChecker {
+    interface Handler {
+        void setNextHandler(Handler)
+        boolean handleRequest(String)
+        boolean handle(String)
+    }
+
+    class HaltChecker {
+        {static} boolean willHalt(String)
+    }
+
+    class CountUp implements Handler {
+        -Handler nextHandler
+        +void setNextHandler(Handler)
+        +boolean handleRequest(String)
+        +boolean handle(String)
+    }
+
+    class CountDown implements Handler {
+        -Handler nextHandler
+        +void setNextHandler(Handler)
+        +boolean handleRequest(String)
+        +boolean handle(String)
+    }
+}
+
+package AlanTuring.Programs {
+    class Menu {
+        +void mostrarMenu()
+    }
+
+    class CountUp {
+        +void countUp()
+    }
+
+    class CountDown {
+        +void countDown()
+    }
+}
+
+package AlanTuring.Reverser {
+    class ReverserModel {
+        +String simulateCountUp()
+        +String simulateCountDown()
+        +String simulateReverser()
+    }
+
+    class ReverserLogic {
+        {static} boolean willHalt()
+        {static} boolean simulateHaltingProblem()
+        {static} boolean simulateNonHaltingProblem()
+    }
+
+    class ReverserView {
+        +void setVisible(boolean)
+        +void setReverserButtonListener(ActionListener)
+        +void setCountUpButtonListener(ActionListener)
+        +void setCountDownButtonListener(ActionListener)
+        +void setResult(String)
+        +String getResult()
+    }
+
+    class ReverserController {
+        -ReverserView view
+        -Handler chain
+        +void initView()
+        +void setUpChain()
+        +void handleReverser()
+        +void handleCountUp()
+        +void handleCountDown()
+    }
+
+    abstract class InfiniteLoopHandler implements Handler {
+        -Handler nextHandler
+        +void setNextHandler(Handler)
+        +boolean handle(String)
+        +boolean handleNext(String)
+    }
+
+    abstract class ForLoopHandler implements Handler {
+        -Handler nextHandler
+        +void setNextHandler(Handler)
+        +boolean handle(String)
+        +boolean handleNext(String)
+    }
+}
+
+package AlanTuring.Main {
+    class Main {
+        +void main(String[])
+    }
+}
+
+Main "creates" --> "1" ReverserView
+Main "creates" --> "1" ReverserController
+
+ReverserController ..> ReverserView : uses
+ReverserController "uses" --> "1" Handler : chain
+
+@enduml
