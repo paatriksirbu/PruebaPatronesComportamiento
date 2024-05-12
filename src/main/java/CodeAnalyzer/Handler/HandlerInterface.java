@@ -1,4 +1,4 @@
-package CodeAnalyzer;
+package CodeAnalyzer.Handler;
 
 public interface HandlerInterface {
 
