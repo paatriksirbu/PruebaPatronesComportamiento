@@ -24,4 +24,11 @@ public abstract class ForLoopHandler implements Handler{
             return nextHandler.handle(code);
         }
     }
+
+    public boolean handleNext(String code) {
+        if (nextHandler != null) {
+            return nextHandler.handle(code);
+        }
+        return false;
+    }
 }

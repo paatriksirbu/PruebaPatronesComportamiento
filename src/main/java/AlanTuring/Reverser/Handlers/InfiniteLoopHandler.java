@@ -25,4 +25,11 @@ public abstract class InfiniteLoopHandler implements Handler {
         }
 
     }
+
+    public boolean handleNext(String code) {
+        if (nextHandler != null) {
+            return nextHandler.handle(code);
+        }
+        return false;
+    }
 }
