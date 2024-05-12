@@ -1,5 +1,12 @@
 package AlanTuring.HaltChecker;
 
+/**
+ * Esta clase implementa la interfaz Handler y define el comportamiento para manejar
+ * el caso en el que el código contiene un bucle que cuenta hacia abajo.
+ *
+ * @author Patrik Paul Sirbu
+ */
+
 public class CountDown implements Handler{
     private Handler nextHandler;
 
@@ -7,6 +14,15 @@ public class CountDown implements Handler{
     public void setNextHandler(Handler nextHandler) {
         this.nextHandler = nextHandler;
     }
+
+    /**
+     * Maneja la solicitud de detención de la ejecución de código. Si el código contiene un bucle que cuenta hacia abajo,
+     * devuelve true, lo que significa que el código se detendrá. Si el código no contiene un bucle que cuenta hacia abajo,
+     * pasa la solicitud al siguiente manejador en la cadena de responsabilidad.
+     *
+     * @param code El código a evaluar.
+     * @return true si el código contiene un bucle que cuenta hacia abajo, el resultado del siguiente manejador en caso contrario.
+     */
 
     @Override
     public boolean handleRequest(String code) {

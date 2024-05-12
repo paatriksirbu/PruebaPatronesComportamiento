@@ -3,6 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * Esta clase extiende de JPanel y representa la vista de la aplicación.
+ * Contiene varios botones y un área de texto para mostrar los resultados.
+ * @autor Patrik Paul Sirbu
+ */
+
 public class ReverserView extends JPanel{
     private JButton countUpButton;
     private JButton countDownButton;
@@ -10,12 +16,18 @@ public class ReverserView extends JPanel{
     private JButton stopButton;
     private JTextArea result;
 
+    /**
+     * Constructor de la clase. Establece el layout y coloca los componentes en el panel.
+     */
 
     public ReverserView(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         placeComponents();
     }
 
+    /**
+     * Colocamos los componentes en el panel.
+     */
 
     private void placeComponents(){
         countUpButton = createButton("Count Up");
@@ -40,6 +52,13 @@ public class ReverserView extends JPanel{
 
     }
 
+    /**
+     * Crea un botón con el texto proporcionado.
+     *
+     * @param text El texto del botón.
+     * @return El botón creado.
+     */
+
     private JButton createButton(String text){
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -49,6 +68,13 @@ public class ReverserView extends JPanel{
         button.setFocusPainted(false);
         return button;
     }
+
+    /**
+     * Establece el listener de los botones.
+     *
+     * @param listener El listener a establecer.
+     */
+
     public void setCountUpButtonListener(ActionListener listener){
         countUpButton.addActionListener(listener);
     }
@@ -61,13 +87,31 @@ public class ReverserView extends JPanel{
         reverserButton.addActionListener(listener);
     }
 
+    /**
+     * Establece el texto del área de resultados.
+     *
+     * @param text El texto a establecer.
+     */
+
     public void setResult(String text){
         result.setText(text);
     }
 
+    /**
+     * Obtiene el texto del área de resultados.
+     *
+     * @return El texto del área de resultados.
+     */
+
     public String getResult(){
         return result.getText();
     }
+
+    /**
+     * Muestra un mensaje de error.
+     *
+     * @param errorMessage El mensaje de error a mostrar.
+     */
 
 
     public void displayErrorMessage(String errorMessage){
@@ -89,6 +133,12 @@ public class ReverserView extends JPanel{
         warningMessage = "Warning there is a problem.";
         JOptionPane.showMessageDialog(this, warningMessage);
     }
+
+    /**
+     * Obtiene el código ingresado por el usuario.
+     *
+     * @return El código ingresado por el usuario.
+     */
 
     public String getCodeInput(){
         return JOptionPane.showInputDialog(this, "Enter code to analyze:");

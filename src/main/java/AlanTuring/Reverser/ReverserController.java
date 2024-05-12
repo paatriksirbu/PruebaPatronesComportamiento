@@ -3,6 +3,11 @@ import AlanTuring.HaltChecker.Handler;
 import AlanTuring.Reverser.Handlers.ForLoopHandler;
 import AlanTuring.Reverser.Handlers.InfiniteLoopHandler;
 
+/**
+ * Esta clase contiene el controlador de la aplicación. Maneja las interacciones entre la vista y el modelo.
+ *
+ * @author Patrik Paul Sirbu
+ */
 public class ReverserController {
 
     private ReverserView view;

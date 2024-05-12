@@ -1,5 +1,11 @@
 package AlanTuring.Reverser;
 
+/**
+ * Esta clase contiene el modelo de la aplicación. Proporciona métodos para simular
+ * diferentes operaciones como contar hacia arriba, contar hacia abajo y revertir.
+ *
+ * @author Patrik Paul Sirbu
+ */
 public class ReverserModel {
     public String simulateCountUp(){    //Loop infinito
         return "Counting up...";

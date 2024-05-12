@@ -3,9 +3,14 @@ package AlanTuring.Main;
 import AlanTuring.Programs.Menu;
 import AlanTuring.Reverser.ReverserController;
 import AlanTuring.Reverser.ReverserView;
-
 import javax.swing.*;
 
+/**
+ * Clase main para ejecutar la aplicacion.
+ * Las utilidades de Swing se utilizan para garantizar que la GUI se cree y actualice en el Event Dispatch Thread.
+ *
+ * @autor Patrik Paul Sirbu
+ */
 
 public class Main {
     public static void main(String[] args) {

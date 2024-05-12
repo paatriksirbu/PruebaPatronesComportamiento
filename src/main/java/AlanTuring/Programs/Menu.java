@@ -2,6 +2,14 @@ package AlanTuring.Programs;
 
 import java.util.Scanner;
 
+
+/*
+ * Esta clase es un menú que muestra las opciones de programas que se pueden ejecutar.
+ * Tiene un método llamado mostrarMenu que muestra las opciones.
+ * El método usa un bucle while para mostrar el menú y ejecutar los programas.
+ * Usado para comprobar que funcionan los programas en terminal.
+ */
+
 public class Menu{
 
     //Metodo que muestra el menu de opciones para comprobar si funciona el programa.
