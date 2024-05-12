@@ -11,30 +11,39 @@ public class ReverserView extends JPanel{
 
 
     public ReverserView(){
-        setLayout(new BorderLayout());
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         placeComponents();
     }
 
+
     private void placeComponents(){
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 1));
-
-        countUpButton = new JButton("Count Up");
-        panel.add(countUpButton);
-
-        countDownButton = new JButton("Count Down");
-        panel.add(countDownButton);
-
-        reverserButton = new JButton("Reverser");
-        panel.add(reverserButton);
+        countUpButton = createButton("Count Up");
+        countDownButton = createButton("Count Down");
+        reverserButton = createButton("Reverser");
 
         result = new JTextArea("Results will be displayed here.");
         result.setEditable(false);
-        panel.add(result);
+        result.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        add(panel, BorderLayout.CENTER);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(countUpButton);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(countDownButton);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(reverserButton);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(result);
     }
 
+    private JButton createButton(String text){
+        JButton button = new JButton(text);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 60, 10, 60));
+        button.setBackground(Color.magenta.darker().darker());
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        return button;
+    }
     public void setCountUpButtonListener(ActionListener listener){
         countUpButton.addActionListener(listener);
     }
@@ -79,5 +88,6 @@ public class ReverserView extends JPanel{
     public String getCodeInput(){
         return JOptionPane.showInputDialog(this, "Enter code to analyze:");
     }
+
 
 }
