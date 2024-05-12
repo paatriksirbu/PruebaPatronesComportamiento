@@ -58,6 +58,7 @@ public class ReverserView extends JFrame{
         return result.getText();
     }
 
+
     public void displayErrorMessage(String errorMessage){
         errorMessage = "An error occurred.";
         JOptionPane.showMessageDialog(this, errorMessage);
