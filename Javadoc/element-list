@@ -1,5 +1,5 @@
-AlanTuring.HaltChecker
 AlanTuring.Main
-AlanTuring.Programs
-AlanTuring.Reverser
-AlanTuring.Reverser.Handlers
+CodeAnalyzer
+CodeAnalyzer.Analyzer
+CodeAnalyzer.Analyzer.Analyzers
+CodeAnalyzer.Handler
