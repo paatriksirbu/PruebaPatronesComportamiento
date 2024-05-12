@@ -8,7 +8,7 @@ package CodeAnalyzer.Handler;
 
 public class HandlerClass implements HandlerInterface{
 
-    private HandlerInterface nextHandler;
+    public HandlerInterface nextHandler;
 
     /**
      * Establece el siguiente manejador en la cadena de responsabilidad.
