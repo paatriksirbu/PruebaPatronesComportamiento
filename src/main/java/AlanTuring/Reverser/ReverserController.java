@@ -1,5 +1,6 @@
 package AlanTuring.Reverser;
 import AlanTuring.HaltChecker.Handler;
+import AlanTuring.Reverser.Handlers.ForLoopHandler;
 import AlanTuring.Reverser.Handlers.InfiniteLoopHandler;
 
 public class ReverserController {
@@ -34,8 +35,34 @@ public class ReverserController {
         view.setResult("Counting down..."); //Muestra el mensaje "Counting down..." en la vista.
     }
 
-    private void setUpChain(){  //Configuramos la cadena de responsabilidad. (El patron Chain of Responsibility)
-        InfiniteLoopHandler infiniteLoopHandler = new InfiniteLoopHandler();
+    private void setUpChain() { //Configuracion de la cadena de responsabilidad. (Patron Chain of Responsibility)
+        InfiniteLoopHandler loopHandler = new InfiniteLoopHandler() {
+            @Override
+            public boolean handle(String code) {
+                if (code.contains("while(true)")) {
+                    System.out.println("It has been detected an infinite loop in the code.");
+                    return true;
+                } else {
+                    return handleNext(code);
+                }
+            }
+        };
+
+        ForLoopHandler forHandler = new ForLoopHandler() {
+            @Override
+            public boolean handle(String code) {
+                if (code.matches(".*for\\s*\\([^;]*;\\s*[^;]+;\\s*[^)]*\\)\\s*\\{.*")) {
+                    System.out.println("It has been detected a for loop in the code.");
+                    return true;
+                } else {
+                    return handleNext(code);
+                }
+            }
+        };
+
+        loopHandler.setNextHandler(forHandler);
+        this.chain = loopHandler;
+
     }
 
 }
