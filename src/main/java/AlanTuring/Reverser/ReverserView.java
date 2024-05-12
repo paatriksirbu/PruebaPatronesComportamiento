@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class ReverserView extends JFrame{
+public class ReverserView extends JPanel{
     private JButton countUpButton;
     private JButton countDownButton;
     private JButton reverserButton;
@@ -11,9 +11,6 @@ public class ReverserView extends JFrame{
 
 
     public ReverserView(){
-        setTitle("Reverser");
-        setSize(400, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         placeComponents();
     }

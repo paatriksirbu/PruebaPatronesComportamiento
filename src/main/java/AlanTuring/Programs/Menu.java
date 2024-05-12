@@ -2,7 +2,9 @@ package AlanTuring.Programs;
 
 import java.util.Scanner;
 
-public class Menu {
+public class Menu{
+
+    //Metodo que muestra el menu de opciones para comprobar si funciona el programa.
     public void mostrarMenu(){
         System.out.println("    - Menu-");
         System.out.println("1. Cuenta regresiva");

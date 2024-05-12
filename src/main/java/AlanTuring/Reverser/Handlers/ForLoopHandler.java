@@ -9,10 +9,6 @@ public abstract class ForLoopHandler implements Handler{
         this.nextHandler = nextHandler;
     }
 
-    @Override
-    public boolean handleRequest(String code) {
-        return false;
-    }
 
     @Override
     public boolean handle(String code) {
@@ -25,10 +21,4 @@ public abstract class ForLoopHandler implements Handler{
         }
     }
 
-    public boolean handleNext(String code) {
-        if (nextHandler != null) {
-            return nextHandler.handle(code);
-        }
-        return false;
-    }
 }
