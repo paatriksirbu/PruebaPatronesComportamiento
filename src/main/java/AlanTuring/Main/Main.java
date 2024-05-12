@@ -18,7 +18,7 @@ public class Main {
             mainFrame.setLayout(new BoxLayout(mainFrame.getContentPane(), BoxLayout.Y_AXIS));
 
             mainFrame.add(reverserView);
-            mainFrame.pack();
+            mainFrame.setSize(400, 300);
             mainFrame.setVisible(true);
 
         });
