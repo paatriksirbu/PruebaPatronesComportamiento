@@ -1,10 +1,15 @@
+/**
+ * La clase Main es la clase principal de la aplicación Code Analyzer.
+ * Crea la interfaz de usuario y maneja las acciones del usuario.
+ * @author Patrik Paul Sirbu
+ */
 package CodeAnalyzer;
 
 import CodeAnalyzer.Analyzer.Analyzer;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+
 
 public class Main {
     private JFrame frame;
@@ -12,6 +17,11 @@ public class Main {
     private JButton analyzeButton;
     private JTextArea resultArea;
     private JTextArea rulesArea;  // Define el JTextArea para las reglas
+
+    /**
+     * Constructor de la clase Main.
+     * Inicializa la interfaz de usuario.
+     */
 
     public Main() {
         initializeUI();
@@ -74,6 +84,12 @@ public class Main {
         frame.setVisible(true);
     }
 
+    /**
+     * Devuelve el texto de las normas.
+     *
+     * @return el texto de las normas.
+     */
+
     private String getRulesText() {
         return "Normas:\n" +
                 "Norma 1: Ingresa el código que desees. Puedes usar for y while.\n" +
@@ -81,6 +97,12 @@ public class Main {
                 "\nNorma 3: Si pulsas el botón 'Analizar', el programa te dirá si hay errores en tu código.\n";
     }
 
+    /**
+     * Maneja la acción de análisis de código.
+     * Se llama cuando el usuario hace clic en el botón "Analizar".
+     *
+     * @param e el evento de acción.
+     */
     private void analyzeAction(ActionEvent e) {
         String input = inputField.getText();
         Analyzer analyzer = new Analyzer();
